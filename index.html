@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — AI Engineer & Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --navy:#0B1829;
+    --navy-light:#0F2137;
+    --navy-card:#132239;
+    --navy-border:#1a3050;
+    --teal:#14B8A6;
+    --teal-dim:#0e8a7c;
+    --teal-glow:rgba(20,184,166,0.12);
+    --teal-pale:rgba(20,184,166,0.08);
+    --white:#F1F5F9;
+    --muted:#94A3B8;
+    --muted-dark:#64748B;
+    --text:#E2E8F0;
+    --font-display:'Space Grotesk',sans-serif;
+    --font-body:'Inter',sans-serif;
+    --font-mono:'JetBrains Mono',monospace;
+  }
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--navy);
+    color:var(--text);
+    font-family:var(--font-body);
+    font-size:16px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ── NAV ── */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 clamp(1.5rem,5vw,4rem);
+    height:64px;
+    background:rgba(11,24,41,0.85);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--navy-border);
+  }
+  .nav-logo{
+    font-family:var(--font-display);font-weight:700;font-size:1.1rem;
+    color:var(--teal);letter-spacing:-0.02em;
+  }
+  .nav-links{display:flex;gap:2rem;list-style:none}
+  .nav-links a{
+    color:var(--muted);font-size:0.875rem;font-weight:500;
+    text-decoration:none;transition:color .2s;letter-spacing:.02em;
+  }
+  .nav-links a:hover{color:var(--teal)}
+
+  /* ── SECTIONS ── */
+  section{padding:6rem clamp(1.5rem,5vw,4rem)}
+  .container{max-width:1000px;margin:0 auto}
+
+  /* ── HERO ── */
+  #hero{
+    min-height:100vh;display:flex;align-items:center;
+    padding-top:64px;
+    background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(20,184,166,0.06) 0%,transparent 70%);
+  }
+  .hero-inner{max-width:1000px;margin:0 auto;width:100%}
+  .hero-eyebrow{
+    font-family:var(--font-mono);font-size:0.82rem;
+    color:var(--teal);letter-spacing:.12em;text-transform:uppercase;
+    margin-bottom:1.5rem;opacity:0.9;
+  }
+  .hero-name{
+    font-family:var(--font-display);
+    font-size:clamp(2.8rem,7vw,5.2rem);
+    font-weight:700;line-height:1.08;letter-spacing:-0.03em;
+    color:var(--white);margin-bottom:1.2rem;
+  }
+  .hero-name span{color:var(--teal)}
+  .hero-title{
+    font-family:var(--font-display);
+    font-size:clamp(1.1rem,2.5vw,1.55rem);
+    font-weight:400;color:var(--muted);
+    margin-bottom:2rem;
+    min-height:2.4em;
+  }
+  .hero-title .typed{color:var(--teal);font-weight:600}
+  .cursor{
+    display:inline-block;width:2px;height:1.1em;
+    background:var(--teal);margin-left:2px;
+    animation:blink .8s step-end infinite;vertical-align:text-bottom;
+  }
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+  .hero-desc{
+    font-size:1rem;color:var(--muted);max-width:580px;
+    line-height:1.8;margin-bottom:2.5rem;
+  }
+  .hero-badges{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2.5rem}
+  .badge{
+    font-family:var(--font-mono);font-size:.75rem;
+    padding:.3rem .8rem;border-radius:4px;
+    border:1px solid var(--navy-border);
+    color:var(--muted);background:var(--navy-card);
+    letter-spacing:.04em;
+  }
+  .hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:.45rem;
+    padding:.75rem 1.6rem;border-radius:6px;
+    font-family:var(--font-display);font-size:.9rem;font-weight:600;
+    text-decoration:none;transition:all .2s;cursor:pointer;
+    border:none;
+  }
+  .btn-primary{
+    background:var(--teal);color:#0B1829;
+  }
+  .btn-primary:hover{background:#0e8a7c;transform:translateY(-1px)}
+  .btn-outline{
+    background:transparent;color:var(--teal);
+    border:1px solid var(--teal);
+  }
+  .btn-outline:hover{background:var(--teal-glow);transform:translateY(-1px)}
+
+  /* ── SECTION HEADER ── */
+  .section-tag{
+    font-family:var(--font-mono);font-size:.75rem;color:var(--teal);
+    letter-spacing:.12em;text-transform:uppercase;margin-bottom:.6rem;
+  }
+  .section-title{
+    font-family:var(--font-display);font-size:clamp(1.6rem,4vw,2.2rem);
+    font-weight:700;color:var(--white);letter-spacing:-0.025em;
+    margin-bottom:1rem;
+  }
+  .section-line{
+    width:3rem;height:3px;background:var(--teal);
+    border-radius:2px;margin-bottom:2.5rem;
+  }
+
+  /* ── ABOUT ── */
+  #about{background:var(--navy-light)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+  .about-text p{color:var(--muted);line-height:1.9;margin-bottom:1rem;font-size:.98rem}
+  .about-text p strong{color:var(--white)}
+  .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .stat-card{
+    background:var(--navy-card);border:1px solid var(--navy-border);
+    border-radius:8px;padding:1.25rem;
+  }
+  .stat-card .num{
+    font-family:var(--font-display);font-size:1.8rem;font-weight:700;
+    color:var(--teal);line-height:1;margin-bottom:.25rem;
+  }
+  .stat-card .label{font-size:.8rem;color:var(--muted);line-height:1.4}
+
+  /* ── SKILLS ── */
+  #skills{background:var(--navy)}
+  .field-map{
+    background:var(--navy-card);border:1px solid var(--navy-border);
+    border-radius:12px;padding:1.5rem;margin-bottom:2.5rem;
+  }
+  .field-map svg{width:100%;height:auto;display:block;max-width:760px;margin:0 auto}
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem}
+  .skill-card{
+    background:var(--navy-card);border:1px solid var(--navy-border);
+    border-radius:8px;padding:1.4rem;
+    transition:border-color .2s,background .2s;
+  }
+  .skill-card:hover{border-color:var(--teal);background:rgba(20,184,166,0.04)}
+  .skill-card .sk-icon{
+    font-size:1.4rem;margin-bottom:.8rem;
+  }
+  .skill-card .sk-title{
+    font-family:var(--font-display);font-size:.95rem;font-weight:600;
+    color:var(--white);margin-bottom:.75rem;
+  }
+  .skill-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+  .skill-tag{
+    font-size:.73rem;padding:.2rem .55rem;border-radius:3px;
+    background:var(--teal-pale);color:var(--teal);
+    border:1px solid rgba(20,184,166,0.2);
+    font-family:var(--font-mono);
+  }
+
+  /* ── PROJECT ── */
+  #project{background:var(--navy-light)}
+  .project-card{
+    background:var(--navy-card);border:1px solid var(--navy-border);
+    border-radius:12px;overflow:hidden;
+  }
+  .project-header{
+    background:linear-gradient(135deg,rgba(20,184,166,0.1) 0%,rgba(20,184,166,0.03) 100%);
+    border-bottom:1px solid var(--navy-border);
+    padding:2rem 2.5rem;
+    display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;
+    flex-wrap:wrap;
+  }
+  .project-label{
+    font-family:var(--font-mono);font-size:.72rem;color:var(--teal);
+    letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;
+  }
+  .project-name{
+    font-family:var(--font-display);font-size:1.6rem;font-weight:700;
+    color:var(--white);letter-spacing:-0.02em;margin-bottom:.3rem;
+  }
+  .project-subtitle{color:var(--muted);font-size:.9rem}
+  .project-badge{
+    background:rgba(20,184,166,0.15);border:1px solid rgba(20,184,166,0.3);
+    color:var(--teal);font-size:.78rem;font-weight:600;
+    padding:.4rem .9rem;border-radius:100px;white-space:nowrap;
+    font-family:var(--font-display);
+  }
+  .project-body{padding:2rem 2.5rem}
+  .project-desc{color:var(--muted);font-size:.95rem;line-height:1.85;margin-bottom:1.5rem}
+  .project-points{list-style:none;display:grid;gap:.7rem;margin-bottom:1.5rem}
+  .project-points li{
+    display:flex;gap:.75rem;font-size:.92rem;color:var(--muted);align-items:flex-start;
+  }
+  .project-points li::before{
+    content:"→";color:var(--teal);font-weight:700;flex-shrink:0;margin-top:.05em;
+  }
+  .project-points li strong{color:var(--white)}
+  .project-tech{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.25rem}
+  .tech-tag{
+    font-family:var(--font-mono);font-size:.73rem;
+    padding:.25rem .65rem;border-radius:4px;
+    background:var(--navy-light);border:1px solid var(--navy-border);
+    color:var(--muted);
+  }
+
+  /* ── PIPELINE DIAGRAM (system architecture figure) ── */
+  .pipeline-wrap{margin-bottom:2rem}
+  .pipeline-caption{
+    font-family:var(--font-mono);font-size:.72rem;color:var(--teal);
+    letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem;
+  }
+  .pipeline{
+    display:flex;align-items:stretch;gap:0;
+    background:var(--navy-light);border:1px solid var(--navy-border);
+    border-radius:10px;padding:1.5rem 1.25rem;
+    overflow-x:auto;
+  }
+  .pl-stage{
+    flex:1 1 0;min-width:132px;
+    display:flex;flex-direction:column;align-items:center;text-align:center;
+    padding:.25rem .5rem;
+  }
+  .pl-index{
+    font-family:var(--font-mono);font-size:.68rem;color:var(--teal-dim);
+    letter-spacing:.08em;margin-bottom:.5rem;
+  }
+  .pl-icon{
+    width:44px;height:44px;border-radius:10px;
+    background:var(--teal-pale);border:1px solid rgba(20,184,166,0.25);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.25rem;margin-bottom:.7rem;
+  }
+  .pl-label{
+    font-family:var(--font-display);font-size:.85rem;font-weight:600;
+    color:var(--white);margin-bottom:.35rem;line-height:1.3;
+  }
+  .pl-sub{font-size:.74rem;color:var(--muted);line-height:1.5}
+  .pl-arrow{
+    flex:0 0 auto;align-self:center;color:var(--teal);
+    font-size:1.1rem;font-weight:700;padding:0 .35rem;opacity:.7;
+  }
+  .pipeline-compact .pl-stage{padding:.25rem}
+  .pipeline-compact .pl-icon{margin-bottom:.55rem}
+  .pipeline-compact .pl-label{margin-bottom:0;font-size:.82rem}
+  @media(max-width:820px){
+    .pipeline{flex-direction:column;padding:1.25rem 1.5rem}
+    .pl-stage{flex-direction:row;text-align:left;min-width:0;gap:1rem;padding:.6rem 0}
+    .pl-icon{margin-bottom:0;flex-shrink:0}
+    .pl-arrow{transform:rotate(90deg);padding:.1rem 0;align-self:flex-start;margin-left:20px}
+    .pl-sub-wrap{display:flex;flex-direction:column}
+  }
+
+  /* ── TIMELINE (Experience + Education) ── */
+  #experience{background:var(--navy)}
+  .timeline{position:relative;padding-left:2rem}
+  .timeline::before{
+    content:'';position:absolute;left:0;top:.5rem;bottom:0;
+    width:1px;background:var(--navy-border);
+  }
+  .tl-item{position:relative;margin-bottom:2rem}
+  .tl-item::before{
+    content:'';position:absolute;left:-2rem;top:.5rem;
+    width:8px;height:8px;border-radius:50%;
+    background:var(--teal);border:2px solid var(--navy);
+    margin-left:-4px;
+  }
+  .tl-period{
+    font-family:var(--font-mono);font-size:.75rem;color:var(--teal);
+    letter-spacing:.06em;margin-bottom:.3rem;
+  }
+  .tl-role{
+    font-family:var(--font-display);font-size:1.05rem;font-weight:600;
+    color:var(--white);margin-bottom:.15rem;
+  }
+  .tl-org{font-size:.88rem;color:var(--muted);margin-bottom:.6rem}
+  .tl-points{list-style:none;display:grid;gap:.4rem}
+  .tl-points li{
+    font-size:.88rem;color:var(--muted);
+    display:flex;gap:.6rem;align-items:flex-start;
+  }
+  .tl-points li::before{content:"·";color:var(--teal);font-weight:900;flex-shrink:0}
+
+  /* ── EDUCATION ── */
+  #education{background:var(--navy-light)}
+  .edu-grid{display:grid;gap:1.25rem}
+  .edu-card{
+    background:var(--navy-card);border:1px solid var(--navy-border);
+    border-radius:8px;padding:1.4rem 1.6rem;
+    display:flex;align-items:flex-start;gap:1.25rem;
+  }
+  .edu-dot{
+    width:10px;height:10px;border-radius:50%;background:var(--teal);
+    flex-shrink:0;margin-top:.45rem;
+  }
+  .edu-period{
+    font-family:var(--font-mono);font-size:.75rem;color:var(--teal);
+    margin-bottom:.25rem;
+  }
+  .edu-degree{
+    font-family:var(--font-display);font-size:1rem;font-weight:600;
+    color:var(--white);margin-bottom:.15rem;
+  }
+  .edu-school{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+  .edu-note{font-size:.82rem;color:var(--teal);font-style:italic}
+  .edu-thesis{font-size:.85rem;color:var(--muted);margin-top:.35rem;line-height:1.5}
+
+  /* ── CERTS ── */
+  #certs{background:var(--navy)}
+  .certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem}
+  .cert-card{
+    background:var(--navy-card);border:1px solid var(--navy-border);
+    border-radius:8px;padding:1.3rem 1.4rem;
+    transition:border-color .2s;
+  }
+  .cert-card:hover{border-color:rgba(20,184,166,0.35)}
+  .cert-icon{font-size:1.3rem;margin-bottom:.7rem}
+  .cert-title{
+    font-family:var(--font-display);font-size:.95rem;font-weight:600;
+    color:var(--white);margin-bottom:.25rem;
+  }
+  .cert-org{font-size:.82rem;color:var(--teal);margin-bottom:.4rem}
+  .cert-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.5rem}
+  .cert-tag{
+    font-size:.7rem;padding:.15rem .5rem;border-radius:3px;
+    background:var(--navy-light);border:1px solid var(--navy-border);
+    color:var(--muted);font-family:var(--font-mono);
+  }
+
+  /* ── LANGUAGES ── */
+  .lang-row{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1rem}
+  .lang-pill{
+    display:flex;align-items:center;gap:.75rem;
+    background:var(--navy-card);border:1px solid var(--navy-border);
+    border-radius:8px;padding:.8rem 1.2rem;
+  }
+  .lang-name{font-family:var(--font-display);font-size:.95rem;font-weight:600;color:var(--white)}
+  .lang-level{font-size:.8rem;color:var(--muted)}
+  .lang-flag{font-size:1.2rem}
+
+  /* ── CONTACT ── */
+  #contact{background:var(--navy-light)}
+  .contact-inner{
+    background:var(--navy-card);border:1px solid var(--navy-border);
+    border-radius:12px;padding:3rem;text-align:center;
+    max-width:640px;margin:0 auto;
+  }
+  .contact-inner h2{
+    font-family:var(--font-display);font-size:1.6rem;font-weight:700;
+    color:var(--white);margin-bottom:.75rem;
+  }
+  .contact-inner p{color:var(--muted);font-size:.96rem;margin-bottom:2rem;line-height:1.8}
+  .contact-links{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;margin-bottom:2rem}
+  .contact-link{
+    display:flex;align-items:center;gap:.5rem;
+    color:var(--muted);font-size:.88rem;text-decoration:none;
+    transition:color .2s;
+  }
+  .contact-link:hover{color:var(--teal)}
+  .contact-link svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0}
+
+  /* ── FOOTER ── */
+  footer{
+    text-align:center;padding:1.5rem;
+    border-top:1px solid var(--navy-border);
+    font-size:.8rem;color:var(--muted-dark);
+    font-family:var(--font-mono);
+  }
+
+  /* ── REVEAL ANIMATION ── */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:720px){
+    .about-grid{grid-template-columns:1fr}
+    .stats-grid{grid-template-columns:1fr 1fr}
+    .nav-links{display:none}
+    .project-header{flex-direction:column}
+    .contact-inner{padding:2rem 1.5rem}
+  }
+  @media(max-width:480px){
+    .hero-cta{flex-direction:column}
+    .btn{justify-content:center}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">&#x3C; IBTIHEL  /&#x3E;</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#project">Project</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">// Available for opportunities</p>
+    <h1 class="hero-name">IBTIHEL<br><span>KADACHE</span></h1>
+    <div class="hero-title">
+      I build AI systems that <span class="typed" id="typed-text"></span><span class="cursor" id="cursor"></span>
+    </div>
+    <p class="hero-desc">
+      AI Engineer and Information systems and software engineering with a Master's Degree in Artificial Intelligence and Multimedia from the University of Batna 2, graduated with <strong style="color:var(--white)">Excellent Distinction</strong>. I've worked with Operations Research, Machine Learning, intelligent decision-support systems, and NLP — with a particular interest in Oil &amp; Gas, Banking, IT and Telecommunications sectors.
+    </p>
+    <div class="hero-badges">
+      <span class="badge">Python</span>
+      <span class="badge">TensorFlow</span>
+      <span class="badge">Scikit-Learn</span>
+      <span class="badge">NLP</span>
+      <span class="badge">Computer Vision</span>
+      <span class="badge">Operations Research</span>
+      <span class="badge">Linear Programming</span>
+      <span class="badge">OpenCV</span>
+    </div>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#contact">Get in touch ↓</a>
+      <a class="btn btn-outline" href="#project">View key project →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-tag">// 01 — About</p>
+      <h2 class="section-title">Who I am</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>
+          I'm a recent <strong>AI Engineer </strong> graduate with a strong academic foundation and real project experience. My work sits at the intersection of Artificial Intelligence and Operations Research — building systems that don't just analyze data, but optimize decisions at scale.
+        </p>
+        <p>
+          I designed and built <strong> O²PNL(X) </strong>, an intelligent platform that converts natural-language problem descriptions directly into mathematical optimization models and generates optimal solutions across industrial, healthcare, and IT domains — combining NLP, symbolic AI, and advanced OR solvers.
+        </p>
+        <p>
+          I'm a <strong>hard-working, detail-oriented professional</strong> who thrives under pressure. Whether it's a complex thesis deliverable, an entrepreneurship program, or a technical infrastructure challenge at Algérie Télécom, I follow through and deliver — on time and at the highest standard.
+        </p>
+        <p>
+          My goal is to contribute to <strong>digital transformation and data-driven decision-making</strong> in sectors where precision and optimization truly matter.
+        </p>
+      </div>
+      <div class="stats-grid reveal">
+        <div class="stat-card">
+          <div class="num">Excellent</div>
+          <div class="label">Master's graduation distinction — University of Batna 2, 2026</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">2+</div>
+          <div class="label">Weeks of hands-on technical experience — Algérie Télécom</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">3</div>
+          <div class="label">Languages: Arabic (native), French (fluent), English (B2)</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">O²PNL(X)</div>
+          <div class="label">AI startup in progress — Label Startup Algérie (Loi n°23-11)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-tag">// 02 — Technical Skills</p>
+      <h2 class="section-title">What I work with</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="field-map reveal">
+      <svg viewBox="0 0 800 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram connecting AI Engineering to Machine Learning, NLP, Operations Research, Software Engineering, and Decision Systems">
+        <line x1="400" y1="190" x2="150" y2="72" stroke="#1a3050" stroke-width="2"/>
+        <line x1="400" y1="190" x2="650" y2="72" stroke="#1a3050" stroke-width="2"/>
+        <line x1="400" y1="190" x2="112" y2="300" stroke="#1a3050" stroke-width="2"/>
+        <line x1="400" y1="190" x2="688" y2="300" stroke="#1a3050" stroke-width="2"/>
+        <line x1="400" y1="190" x2="400" y2="345" stroke="#1a3050" stroke-width="2"/>
+
+        <g>
+          <circle cx="150" cy="72" r="42" fill="#132239" stroke="#14B8A6" stroke-width="1.5"/>
+          <text x="150" y="78" text-anchor="middle" font-size="22">🤖</text>
+          <text x="150" y="132" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600" fill="#F1F5F9">Machine Learning</text>
+        </g>
+        <g>
+          <circle cx="650" cy="72" r="42" fill="#132239" stroke="#14B8A6" stroke-width="1.5"/>
+          <text x="650" y="78" text-anchor="middle" font-size="22">🗣️</text>
+          <text x="650" y="132" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600" fill="#F1F5F9">NLP</text>
+        </g>
+        <g>
+          <circle cx="112" cy="300" r="42" fill="#132239" stroke="#14B8A6" stroke-width="1.5"/>
+          <text x="112" y="306" text-anchor="middle" font-size="22">📐</text>
+          <text x="112" y="360" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600" fill="#F1F5F9">Operations Research</text>
+        </g>
+        <g>
+          <circle cx="688" cy="300" r="42" fill="#132239" stroke="#14B8A6" stroke-width="1.5"/>
+          <text x="688" y="306" text-anchor="middle" font-size="22">💻</text>
+          <text x="688" y="360" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600" fill="#F1F5F9">Software Engineering</text>
+        </g>
+        <g>
+          <circle cx="400" cy="345" r="42" fill="#132239" stroke="#14B8A6" stroke-width="1.5"/>
+          <text x="400" y="351" text-anchor="middle" font-size="22">🧭</text>
+        </g>
+        <text x="400" y="405" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600" fill="#F1F5F9">Decision Systems</text>
+
+        <circle cx="400" cy="190" r="58" fill="#0F2137" stroke="#14B8A6" stroke-width="2"/>
+        <text x="400" y="184" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#F1F5F9">AI</text>
+        <text x="400" y="204" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#F1F5F9">Engineering</text>
+      </svg>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="sk-icon">🤖</div>
+        <div class="sk-title">Artificial Intelligence</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Machine Learning</span>
+          <span class="skill-tag">Deep Learning</span>
+          <span class="skill-tag">NLP</span>
+          <span class="skill-tag">Computer Vision</span>
+          <span class="skill-tag">LLMs</span>
+             <span class="skill-tag">Transformers</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="sk-icon">📐</div>
+        <div class="sk-title">Optimization & OR</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Linear Programming</span>
+          <span class="skill-tag">Integer Programming</span>
+          <span class="skill-tag">Resource Allocation</span>
+          <span class="skill-tag">Decision Support</span>
+          <span class="skill-tag">Operations Research</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="sk-icon">💻</div>
+        <div class="sk-title">Programming</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">C++</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">HTML</span>
+          <span class="skill-tag">CSS</span>
+          <span class="skill-tag">XML</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="sk-icon">📚</div>
+        <div class="sk-title">Frameworks & Libraries</div>
+        <div class="skill-tags">
+          <span class="skill-tag">TensorFlow</span>
+          <span class="skill-tag">Scikit-Learn</span>
+          <span class="skill-tag">OpenCV</span>
+          <span class="skill-tag">NLTK</span>
+          <span class="skill-tag">spaCy</span>
+          <span class="skill-tag">Numpy</span>
+          <span class="skill-tag">Matplotlib</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="sk-icon">🛠️</div>
+        <div class="sk-title">Tools & Software</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">GitHub</span>
+          <span class="skill-tag">LaTeX</span>
+          <span class="skill-tag">Microsoft Office</span>
+          <span class="skill-tag">PowerPoint</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="sk-icon">🚀</div>
+        <div class="sk-title">Entrepreneurship</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Business Planning</span>
+          <span class="skill-tag">Innovation</span>
+          <span class="skill-tag">Startup Development</span>
+          <span class="skill-tag">BMC</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KEY PROJECT -->
+<section id="project">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-tag">// 03 — Key Project</p>
+      <h2 class="section-title">Flagship work</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-header">
+        <div>
+          <p class="project-label">Master Graduation Project · 2025–2026</p>
+          <h3 class="project-name">O²PNL(X)</h3>
+          <p class="project-subtitle">Intelligent Operational Research Platform</p>
+        </div>
+        <span class="project-badge">🏆 Excellent Distinction</span>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">
+          O²PNL(X) is a neuro-symbolic AI platform that turns plain-language descriptions of
+          operational problems into optimal, explained decisions — across industry, healthcare,
+          and IT. It's my master's graduation project, now growing into a startup under the
+          Label Startup Algérie program (Loi n°23-11).
+        </p>
+
+        <div class="pipeline-wrap">
+          <p class="pipeline-caption">// Language in, decision out</p>
+          <div class="pipeline pipeline-compact">
+            <div class="pl-stage">
+              <div class="pl-icon">💬</div>
+              <div class="pl-label">Natural Language</div>
+            </div>
+            <div class="pl-arrow">→</div>
+            <div class="pl-stage">
+              <div class="pl-icon">🧠</div>
+              <div class="pl-label">NLP </div>
+            </div>
+           
+            <div class="pl-arrow">→</div>
+            <div class="pl-stage">
+              <div class="pl-icon">✅</div>
+              <div class="pl-label">Optimal Solution</div>
+            </div>
+          </div>
+        </div>
+
+        <ul class="project-points">
+          <li><span>Neuro-symbolic architecture combining <strong>NLP parsing</strong> with formal <strong>Operations Research solvers</strong>.</span></li>
+          <li><span>Presented at the <strong>National University–Industry Forum 2026</strong> to industry partners and researchers.</span></li>
+          <li><span>Progressing toward <strong>Label Startup Algérie</strong> commercialization with a B2B SaaS model.</span></li>
+        </ul>
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">TensorFlow</span>
+          <span class="tech-tag">Scikit-Learn</span>
+          <span class="tech-tag">OpenCV</span>
+          <span class="tech-tag">NLP</span>
+          <span class="tech-tag">Operations Research</span>
+          <span class="tech-tag">Linear Programming</span>
+          <span class="tech-tag">Node.js</span>
+          <span class="tech-tag">LaTeX</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-tag">// 04 — Experience</p>
+      <h2 class="section-title">Professional background</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <p class="tl-period">2023 · 2-week internship</p>
+        <p class="tl-role">Information Technology Intern</p>
+        <p class="tl-org">Algérie Télécom</p>
+        <ul class="tl-points">
+          <li>Contributed to IT infrastructure maintenance and information-system support activities.</li>
+          <li>Assisted with network operations and technical support tasks alongside the internal IT team.</li>
+          <li>Gained direct exposure to telecommunication service-management processes in an enterprise environment.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-tag">// 05 — Education</p>
+      <h2 class="section-title">Academic background</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <div class="edu-dot"></div>
+        <div>
+          <p class="edu-period">2025 – 2026</p>
+          <p class="edu-degree">Master's Degree in Artificial Intelligence and Multimedia</p>
+          <p class="edu-school">University of Batna 2</p>
+          <p class="edu-note">⭐ Graduated with Excellent Distinction (19.75/20)</p>
+          <p class="edu-thesis">Thesis: <em>Toward an Intelligent Operational Research Approach Applied in Industry, Healthcare and IT Fields</em><br>Supervisor: Dr. Abdessemed Mohamed Ridha</p>
+        </div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-dot"></div>
+        <div>
+          <p class="edu-period">2023 – 2024</p>
+          <p class="edu-degree">Bachelor's Degree in Information Systems and Software Engineering</p>
+          <p class="edu-school">University of Batna 2</p>
+          <p class="edu-note">⭐ Graduated with Good Distinction (17.5/20)</p>
+          <p class="edu-thesis">
+            Core modules: Graph Theory, Web Applications, Operating Systems, Information
+            System Administration, Advanced Web Programming, Business Intelligence.<br>
+            Graduation project: <em>Online Car Rental Platform</em> — a full-stack web
+            application covering booking, fleet, and user management.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTS -->
+<section id="certs">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-tag">// 06 — Certifications & Languages</p>
+      <h2 class="section-title">Credentials</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="certs-grid">
+      <div class="cert-card reveal">
+        <div class="cert-icon">🎓</div>
+        <div class="cert-title">Entrepreneurship Training Certificate</div>
+        <div class="cert-org">Centre de Développement de l'Entrepreneuriat (CDE) · 21 Days</div>
+        <div class="cert-tags">
+          <span class="cert-tag">Innovation</span>
+          <span class="cert-tag">Business Planning</span>
+          <span class="cert-tag">Entrepreneurship</span>
+          <span class="cert-tag">Project Development</span>
+        </div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-icon">🏛️</div>
+        <div class="cert-title">National University–Industry Forum 2026</div>
+        <div class="cert-org">Participant &amp; Platform Presenter</div>
+        <div class="cert-tags">
+          <span class="cert-tag">Industry Networking</span>
+          <span class="cert-tag">Research</span>
+          <span class="cert-tag">Innovation</span>
+        </div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-icon">🚀</div>
+        <div class="cert-title">Label Startup Algérie — In Progress</div>
+        <div class="cert-org">O²PNL(X) — Loi n°23-11</div>
+        <div class="cert-tags">
+          <span class="cert-tag">AI Startup</span>
+          <span class="cert-tag">B2B SaaS</span>
+          <span class="cert-tag">Founder</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:2.5rem" class="reveal">
+      <p class="section-tag" style="margin-bottom:.8rem">// Languages</p>
+      <div class="lang-row">
+        <div class="lang-pill">
+          <span class="lang-flag">🇩🇿</span>
+          <div>
+            <div class="lang-name">Arabic</div>
+            <div class="lang-level">Native</div>
+          </div>
+        </div>
+        <div class="lang-pill">
+          <span class="lang-flag">🇫🇷</span>
+          <div>
+            <div class="lang-name">French</div>
+            <div class="lang-level">Fluent</div>
+          </div>
+        </div>
+        <div class="lang-pill">
+          <span class="lang-flag">🇬🇧</span>
+          <div>
+            <div class="lang-name">English</div>
+            <div class="lang-level">Professional Working Proficiency (B2)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-tag">// 07 — Contact</p>
+      <h2 class="section-title">Let's connect</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="contact-inner reveal">
+      <h2>Open to opportunities</h2>
+      <p>
+        I'm actively looking for roles in AI Engineering, Data Analysis, and Operations Research — particularly in Oil &amp; Gas, Banking, and Telecommunications. I'm hard-working, reliable, and ready to contribute from day one. Let's talk.
+      </p>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:ibtihel.kadache@gmail.com">
+          <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+          ibtihel.kadache@gmail.com
+        </a>
+        
+        <a class="contact-link" href="https://linkedin.com/in/ibtihel-kadache" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          linkedin.com/in/ibtihel-kadache
+        </a>
+      </div>
+      <a class="btn btn-primary" href="IBTIHEL_KADACHE_CV.pdf" download>
+        ↓ Download CV (PDF)
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>KADACHE IBTIHEL  · Batna, Algeria · 2026</span>
+</footer>
+
+<script>
+  // Typing effect
+  const phrases = [
+    "solve optimization problems in natural language.",
+    "support data-driven decisions at scale.",
+    "transform industry operations with AI.",
+    "convert complexity into clarity.",
+    "bridge AI and Operations Research."
+  ];
+  let phraseIdx = 0, charIdx = 0, deleting = false, pause = 0;
+  const el = document.getElementById('typed-text');
+  function type() {
+    const phrase = phrases[phraseIdx];
+    if (pause > 0) { pause--; setTimeout(type, 80); return; }
+    if (!deleting) {
+      el.textContent = phrase.slice(0, ++charIdx);
+      if (charIdx === phrase.length) { pause = 22; deleting = true; }
+      setTimeout(type, 55);
+    } else {
+      el.textContent = phrase.slice(0, --charIdx);
+      if (charIdx === 0) { deleting = false; phraseIdx = (phraseIdx + 1) % phrases.length; pause = 4; }
+      setTimeout(type, 30);
+    }
+  }
+  type();
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Active nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--teal)' : '';
+    });
+  }, { passive: true });
+</script>
+</body>
+</html>
